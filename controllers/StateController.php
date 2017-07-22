@@ -115,7 +115,7 @@ class StateController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = State::findOne($id)) !== null) {
+        if ($model = State::findOne($id)) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
