@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
 use app\models\State;
+use app\models\City;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\CitySearch */
@@ -27,7 +28,15 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'name',
-            'stateId',
+            [
+                'attribute' => 'stateId',
+                'value' => 'state.name',
+                'filter' => ArrayHelper::map(
+                        State::find()->orderBy('name')->all(),
+                        'id',
+                        'name'
+                )
+            ],
             'population',
             'telephoneCode',
 

@@ -2,7 +2,6 @@
 
 namespace app\controllers;
 
-use app\models\State;
 use Yii;
 use app\models\City;
 use app\models\CitySearch;
@@ -121,9 +120,5 @@ class CityController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
-    }
-
-    private function getStates(){
-        $state = State::find()->orderBy('name')->all();
     }
 }
